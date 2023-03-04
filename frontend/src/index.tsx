@@ -4,12 +4,29 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { WagmiConfig, createClient } from 'wagmi';
+import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
+import { ConnectKitProvider, getDefaultClient } from 'connectkit';
+
+const client = createClient(
+  getDefaultClient({
+    appName: 'ConnectKit CRA demo',
+    //infuraId: process.env.REACT_APP_INFURA_ID,
+    //alchemyId:  process.env.REACT_APP_ALCHEMY_ID,
+    chains: [mainnet, polygon, optimism, arbitrum],
+  })
+);
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <WagmiConfig client={client}>
+      <ConnectKitProvider theme="auto">
+        <App />
+      </ConnectKitProvider>
+    </WagmiConfig>
   </React.StrictMode>
 );
 

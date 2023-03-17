@@ -1,5 +1,4 @@
 const asyncHandler = require('express-async-handler')
-
 // Functions 
 
 // All the req/res part 
@@ -9,9 +8,11 @@ const asyncHandler = require('express-async-handler')
 //  @desc Get menu 
 //  @route GET /api/menu
 //  @access Private
+
 const getMenu = asyncHandler(async (req,res) => {
     res.status(200).json({"message": 'Get menu'})
 })
+
 
 //  @desc Create menu 
 //  @route POST /api/menu
@@ -26,12 +27,14 @@ const createMenu = asyncHandler(async (req,res) => {
     res.status(200).json({"message" : 'Create Menu'}) 
 })
 
+
 //  @desc Update menu 
 //  @route PUT /api/menu/:id
 //  @access Private
 const updateMenu = asyncHandler(async (req,res) => {  // We need a id to update that particular item only/data only
     res.status(200).json({"message" : `Update menu item ${req.params.id}`}) // backticks, so as to include the variables (Javascript)
 })
+
   
 //  @desc Delete menu 
 //  @route  DELETE /api/menu/:id
